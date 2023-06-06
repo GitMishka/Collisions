@@ -8,6 +8,7 @@ pg_database = "postgres"
 pg_user = "postgres"
 pg_password = "Manonthemoon123"
 table_name = "motor_vehicle_collisions"  
+
 conn = psycopg2.connect(
     dbname=pg_database,
     user=pg_user,
