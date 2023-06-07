@@ -16,6 +16,7 @@ conn = psycopg2.connect(
     sslmode='require'
 )
 
+table_name = "motor_vehicle_collisions"
 
 df = pd.read_sql(f"SELECT * FROM motor_vehicle_collisions", conn)
 conn.close()
@@ -25,6 +26,7 @@ total_accidents = df.shape[0]
 accidents_by_borough = df['BOROUGH'].value_counts()
 
 accidents_by_factor = df['CONTRIBUTING_FACTOR_VEHICLE_1'].value_counts()
+
 df.to_csv('results.csv', index=False)
 
 print(f"Total number of accidents: {total_accidents}")

@@ -15,7 +15,7 @@ conn = psycopg2.connect(
     host=pg_host,
     sslmode='require'
 )
-
+table_name = "motor_vehicle_collisions"
 df = pd.read_sql(f"SELECT * FROM {table_name}", conn)
 conn.close()
 
