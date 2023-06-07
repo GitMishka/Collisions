@@ -7,16 +7,17 @@ from shapely.geometry import Point
 import config
 
 
-pg_host = "database-1.cueq5a3aruqx.us-east-2.rds.amazonaws.com"
-pg_database = "postgres"
-pg_user = "postgres"
-pg_password = "Manonthemoon123"
-table_name = "geo_data" 
+pg_host = config.pg_host
+pg_database = config.pg_database
+pg_user = config.pg_user
+pg_password = config.pg_password
+
 conn = psycopg2.connect(
     dbname=pg_database,
     user=pg_user,
     password=pg_password,
-    host=pg_host
+    host=pg_host,
+    sslmode='require'
 )
 
 df = pd.read_sql(f"SELECT * FROM {table_name}", conn)
