@@ -1,25 +1,17 @@
-import psycopg2
+from sqlalchemy import create_engine
 import pandas as pd
 import config
-
 
 pg_host = config.pg_host
 pg_database = config.pg_database
 pg_user = config.pg_user
 pg_password = config.pg_password
 
-conn = psycopg2.connect(
-    dbname=pg_database,
-    user=pg_user,
-    password=pg_password,
-    host=pg_host,
-    sslmode='require'
-)
+engine = create_engine(f'postgresql+psycopg2://{pg_user}:{pg_password}@{pg_host}/{pg_database}?sslmode=require')
 
 table_name = "motor_vehicle_collisions"
 
-df = pd.read_sql(f"SELECT * FROM motor_vehicle_collisions", conn)
-conn.close()
+df = pd.read_sql(f"SELECT * FROM {table_name}", engine)
 
 total_accidents = df.shape[0]
 

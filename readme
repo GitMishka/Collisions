@@ -1,0 +1,46 @@
+# Motor Vehicle Collisions Analysis
+
+This repository contains code for analyzing and visualizing motor vehicle collision data using Python and PostgreSQL. The code retrieves the data from a PostgreSQL database, performs data cleaning and analysis, and generates visualizations.
+
+## Prerequisites
+
+Before running the code, make sure you have the following dependencies installed:
+
+- Python 
+- PostgreSQL
+- psycopg2
+- pandas
+- numpy
+- geopandas
+- folium
+- SQLalchemy
+
+## Getting Started
+
+To use this code, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Install the required dependencies mentioned in the prerequisites.
+3. Configure the PostgreSQL connection details in the `config.py` file.
+4. Create a PostgreSQL database with the name specified in the `config.py` file and import the motor vehicle collision data.
+5. Open a terminal or command prompt and navigate to the repository directory.
+6. Run the Python scripts in the following order:
+
+   - `data_summary.py/data_clean.py`: This script retrieves the motor vehicle collision data from the PostgreSQL database, performs data cleaning, and provides analysis such as the number of duplicate rows, missing values per column, columns with a single unique value, and a summary of the data.
+
+   - `data_clean_geo.py`: This script drops rows with missing latitude or longitude values, creates a new table for cleaned data, and saves it in the PostgreSQL database.
+
+   - `geo.py`: This script retrieves the cleaned data from the PostgreSQL database, creates a heatmap of the motor vehicle collisions using latitude and longitude coordinates, and saves it as an HTML file (`accidents_map.html`).
+
+## Result
+
+After running the above scripts, you will have the following files and outputs:
+
+- `results.csv`: A CSV file containing the raw motor vehicle collision data.
+- `accidents_map.html`: An HTML file displaying a heatmap of the motor vehicle collisions on an interactive map.
+
+
+## Acknowledgements
+
+- The motor vehicle collision data used in this analysis is sourced from an data.gov dataset.
+- This code was developed as a part of a data analysis project and should be used for educational purposes only.

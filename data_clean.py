@@ -17,7 +17,6 @@ conn = psycopg2.connect(
 )
 table_name = "motor_vehicle_collisions"
 df = pd.read_sql(f"SELECT * FROM {table_name}", conn)
-conn.close()
 
 print("Number of duplicate rows: ", df.duplicated().sum())
 
@@ -36,3 +35,4 @@ print(df.describe())
 
 print("Unique categories in BOROUGH: ")
 print(df['BOROUGH'].value_counts())
+conn.close()
